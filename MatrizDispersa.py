@@ -4,7 +4,7 @@ import os
 import webbrowser
 
 # -----------------------------Codigo de MATRIZ DISPERSA ----------------
-# -------- Clase NodoOrtogonal, con 4 apuntadores -> Nodos Internos
+# -------- Clase NodoOrtogonal, con 4 apuntadores -> Nodos Internos 
 
 class Nodo_Celda(): # Nodos ortogonales
     def __init__(self, x, y, caracter):# 'caracter' puede ser cualquier valor
