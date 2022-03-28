@@ -58,7 +58,11 @@ print('Hola mundo')
 def CargarArchivo(ruta):
     print("Ruta que entra para cargar los archivos:" + ruta)
     #C:\Users\Dany\Documents\USAC\IPC2 2022\Laboratorio\Proyecto2\ArchivoPrueba.xml
+    tree= ET.parse(ruta)
+    raiz= tree.getroot()
 
+    for elemento in  raiz:
+        print("ENTRANDO AL ARCHIVO DE ENTRADA")
 
 
 
