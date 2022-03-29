@@ -1,6 +1,10 @@
 import xml.etree.ElementTree as ET
 
 from MatrizDispersa import MatrizDispersa
+from ListaSimpleRobots import ListaSimpleRobots
+from ListaSimpleCiudades import ListaSimpleCiudades
+ListaRobots = ListaSimpleRobots() # CREANDO LISTA VACIA PARA LOS ROBOTS
+ListaCiudades = ListaSimpleCiudades() # CREANDO LISTA VACIA PARA LA CIUDAD
 print("EMPEZANDO EL PROYECTO    ")
 print("Iniciando el menu para  ")
 
