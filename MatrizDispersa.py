@@ -167,6 +167,8 @@ class MatrizDispersa():
             return None
 
 
+
+#METODO PARA GRAFICAR 
     def graficarNeato(self, nombre):
         contenido = '''digraph G{
     node[shape=box, width=0.7, height=0.7, fontname="Arial", fillcolor="white", style=filled]
@@ -219,6 +221,7 @@ class MatrizDispersa():
                     if pivotey.id == pivote_celda.coordenadaY: break
                     posy_celda += 1
                     pivotey = pivotey.siguiente
+                    #aqui le tengo que agregar para que se me pinten de colores
                 if pivote_celda.caracter == '*':
                     contenido += '\n\tnode[label="*" fillcolor="black" pos="{},-{}!" shape=box]i{}_{};'.format( #pos="{},-{}!"
                         posy_celda, posx, pivote_celda.coordenadaX, pivote_celda.coordenadaY
@@ -259,9 +262,13 @@ class MatrizDispersa():
                 
         contenido += '\n}'
         #--- se genera DOT y se procede a ecjetuar el comando
-        dot = "matriz_{}_dot.txt".format(nombre)
+        dot = "matriz_{}.dot".format(nombre)
         with open(dot, 'w') as grafo:
             grafo.write(contenido)
-        result = "matriz_{}.pdf".format(nombre)
-        os.system("neato -Tpdf " + dot + " -o " + result)
-        webbrowser.open(result)     
+        result = "matriz_{}.dot".format(nombre)
+        print("ESTA ES MI RUTA --- "+result)
+        print("neato -Tpng " + dot + " -o " +"IMAGEN.png")
+        os.system("neato -Tpng " + dot + " -o " +"IMAGEN.png")
+        os.system("IMAGEN.png")
+        #webbrowser.open(result)     
+        #neato -Tpng matriz_MatrizDispersa_dot.dot -o imagen.png

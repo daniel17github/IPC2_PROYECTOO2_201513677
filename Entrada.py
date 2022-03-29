@@ -1,4 +1,6 @@
+from calendar import c
 import xml.etree.ElementTree as ET
+
 
 from MatrizDispersa import MatrizDispersa
 from ListaSimpleRobots import ListaSimpleRobots
@@ -50,7 +52,7 @@ matriz.insertar(15,20,'*')
 matriz.insertar(15,2, 'Luis Enrique')
 matriz.insertar(15,4,'*')
 
-#matriz.graficarNeato('Matriz Dispersa')
+matriz.graficarNeato('MatrizDispersa')
 
 matriz.recorridoPorFila(50)
 matriz.recorridoPorColumna(2)
@@ -67,7 +69,9 @@ def CargarArchivo(ruta):
 
     for elemento in  raiz:
         print("ENTRANDO AL ARCHIVO DE ENTRADA")
-
+        global n,f,c
+        
+        #EMPEZANDO A GUARDAR DATOS DEL ARCHIVO DE ENTRADA
 
 
 
