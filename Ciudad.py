@@ -9,7 +9,7 @@ class Ciudad: #Clase Nodo
         self.matriz = MatrizDispersa()
         self.siguiente = None
    
-    def gerNombre(self):
+    def getNombre(self):
         return self.nombre
 
     def getMatriz(self):

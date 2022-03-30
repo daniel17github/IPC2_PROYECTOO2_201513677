@@ -26,7 +26,7 @@ def menu():
     
 
 
-matriz = MatrizDispersa()
+'''matriz = MatrizDispersa()
 
 matriz.insertar(1, 1, 'Andre')     
 matriz.insertar(1, 2, 'Jose Jorge')
@@ -56,7 +56,7 @@ matriz.insertar(15,4,'*')
 matriz.recorridoPorFila(50)
 matriz.recorridoPorColumna(2)
 
-NodoEncontrado = matriz.ubicarCoordenada(50,20)
+NodoEncontrado = matriz.ubicarCoordenada(50,20)'''
 
 print('Hola mundo')
 
@@ -111,14 +111,20 @@ def CargarArchivo(ruta):
             #GUARDANDO LOS DATOS EN LA MATRIZ
                 for subsubelemento in subelemento.iter('fila'):
                     #BUSCANDO LA RUTA A LA QUE SE LE VA A AGREGAR LA MATRIZ
-                    #Posicion =  ListaCiudades.getCiudad(subelemento.attrib['nombre'])
+                    print(subelemento.find('nombre').text)
+                    Posicion =  ListaCiudades.getCiudad(subelemento.find('nombre').text)
+                    print(Posicion)
                     print(subsubelemento.text)
-                    cadena= str(subelemento.text)
-                    lista =re.findall(r"[ECR*\s]" , cadena)
+                    lista =re.findall("[ECR*\s]" , subsubelemento.text)
+                    print(lista)
                     
-                    for que in lista:
-                        print(que)   
-
+                    contador = 1
+                    #FOR DONDE METO LOS DATOS A LA MATRIZ 
+                    for dato in lista:
+                        #GUARDO DATOS EN LA MATRIZ (X , Y , CARACTER)
+                        Posicion.matriz.insertar(filaC,contador,dato)
+                        print(dato)   
+                        contador+1
 
             #print(subelemento.find('ciudad').text)
 
@@ -146,8 +152,13 @@ while True:
         CargarArchivo(ruta)
 
     elif Eleccion == "2":
-        print("Desplegando Busquedas...")
-       
+        print("Desplegando matrices...")
+
+
+
+
+
+
 
     elif Eleccion == "3":
         print("ROBOTS QUE TENGO...")
