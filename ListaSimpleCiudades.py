@@ -6,7 +6,7 @@ class ListaSimpleCiudades():
         self.fin = None
         self.size = 0
 
-    def CrearPiso(self,nombre,fila,columna):
+    def CrearCiudad(self,nombre,fila,columna):
 
         nuevo = Ciudad(nombre,fila,columna) #nueva Ciudad
         #print("Entro lo crea")

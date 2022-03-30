@@ -1,6 +1,5 @@
-from calendar import c
 import xml.etree.ElementTree as ET
-
+import re
 
 from MatrizDispersa import MatrizDispersa
 from ListaSimpleRobots import ListaSimpleRobots
@@ -52,7 +51,7 @@ matriz.insertar(15,20,'*')
 matriz.insertar(15,2, 'Luis Enrique')
 matriz.insertar(15,4,'*')
 
-matriz.graficarNeato('MatrizDispersa')
+#matriz.graficarNeato('MatrizDispersa')
 
 matriz.recorridoPorFila(50)
 matriz.recorridoPorColumna(2)
@@ -64,15 +63,77 @@ print('Hola mundo')
 def CargarArchivo(ruta):
     print("Ruta que entra para cargar los archivos:" + ruta)
     #C:\Users\Dany\Documents\USAC\IPC2 2022\Laboratorio\Proyecto2\ArchivoPrueba.xml
+    #C:\Users\Dany\Documents\USAC\IPC2 2022\Laboratorio\Proyecto2\prueba1.xml
     tree= ET.parse(ruta)
     raiz= tree.getroot()
+    global validass
+    
+    # FOR QUE ME MUESTRA QUE DATOS TENGO 
+    for elemento in raiz:
+        print(elemento.tag)
+        validasss = elemento.tag
 
-    for elemento in  raiz:
-        print("ENTRANDO AL ARCHIVO DE ENTRADA")
-        global n,f,c
+        #GUARDO LOS ROBOTS EN MI LISTA
+        if  validasss == "robots":
+            print('entro en robot')
+            for subelementorobot in elemento.iter('robot'):
+                nombreR=""
+                capacidad=""
+                RtipoR =""
+                #print(subelementorobot.tag)
+                print(subelementorobot.find('nombre').text)
+                nombreR= subelementorobot.find('nombre').text
+                print(subelementorobot.find('nombre').attrib['tipo'])
+                tipoR=str(subelementorobot.find('nombre').attrib['tipo'])
+                print(subelementorobot.find('nombre').attrib['capacidad'])
+                capacidadR= str(subelementorobot.find('nombre').attrib['capacidad'])
+                #CREO LOS ROBOTS QUE VIENEN EN EL ARCHIVO DE ENTRADA            
+                ListaRobots.CrearRobot(nombreR,tipoR,capacidadR)
+
+        #GUARDO LAS CIUDADES EN MI LISTA
+        else:
+            print('entro en ciudades')
+            for subelemento in elemento.iter('ciudad'):
+                nombreC=""
+                filaC=""
+                columnaC=""
+
+                print(subelemento.find('nombre').text)
+                nombreC= subelemento.find('nombre').text
+                print(subelemento.find('nombre').attrib['filas'])
+                filaC=str(subelemento.find('nombre').attrib['filas'])
+                print(subelemento.find('nombre').attrib['columnas'])
+                columnaC= str(subelemento.find('nombre').attrib['columnas'])
+                #CREO LOS ROBOTS QUE VIENEN EN EL ARCHIVO DE ENTRADA            
+                ListaCiudades.CrearCiudad(nombreC,filaC,columnaC)
+                print(subelemento.tag)
+
+            #GUARDANDO LOS DATOS EN LA MATRIZ
+                for subsubelemento in subelemento.iter('fila'):
+                    #BUSCANDO LA RUTA A LA QUE SE LE VA A AGREGAR LA MATRIZ
+                    #Posicion =  ListaCiudades.getCiudad(subelemento.attrib['nombre'])
+                    print(subsubelemento.text)
+                    cadena= str(subelemento.text)
+                    lista =re.findall(r"[ECR*\s]" , cadena)
+                    
+                    for que in lista:
+                        print(que)   
+
+
+            #print(subelemento.find('ciudad').text)
+
         
+      
+        
+
+    print("-----------------------")  
+
+    #FOR QUE ME GUARDA LOS DATOS DEL ARCHIVO DE ENTRADA
+    #print("ETIQUETAS QUE ESTOY AGARRANDO ")
         #EMPEZANDO A GUARDAR DATOS DEL ARCHIVO DE ENTRADA
 
+       
+        
 
 
 while True:
@@ -86,13 +147,16 @@ while True:
 
     elif Eleccion == "2":
         print("Desplegando Busquedas...")
-                 
-
+       
 
     elif Eleccion == "3":
-        print("PISOS ORDENADOS ALFABETICAMENTE...")
-       
+        print("ROBOTS QUE TENGO...")
+        ListaRobots.mostrarRobots()
         
+        print("--------------")
+        print("CIUDADES QUE TENGO")
+        ListaCiudades.mostrarCiudad()        
+
         
     elif Eleccion == "4":
         print("---------------------------------------------------")
