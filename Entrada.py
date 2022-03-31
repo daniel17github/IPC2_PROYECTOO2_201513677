@@ -39,19 +39,9 @@ matriz.insertar(2, 4, '*')
 matriz.insertar(3, 1, '*')
 matriz.insertar(3, 2, 'hola')
 matriz.insertar(3, 3, '*')
-matriz.insertar(3, 4, '*')
-matriz.insertar(4, 1, '*')
-matriz.insertar(4, 2, '*')
-matriz.insertar(4, 3, '*')
-matriz.insertar(4, 4, '*')
-matriz.insertar(8, 9, '*')
-matriz.insertar(9, 8, '*')
-matriz.insertar(2, 2, '*')
-matriz.insertar(15,20,'*')
-matriz.insertar(15,2, 'Luis Enrique')
-matriz.insertar(15,4,'*')
 
-#matriz.graficarNeato('MatrizDispersa')
+
+matriz.graficarNeato('MatrizDispersa')
 
 matriz.recorridoPorFila(50)
 matriz.recorridoPorColumna(2)
@@ -98,34 +88,37 @@ def CargarArchivo(ruta):
                 filaC=""
                 columnaC=""
 
-                print(subelemento.find('nombre').text)
+                #print(subelemento.find('nombre').text)
                 nombreC= subelemento.find('nombre').text
-                print(subelemento.find('nombre').attrib['filas'])
+                #print(subelemento.find('nombre').attrib['filas'])
                 filaC=str(subelemento.find('nombre').attrib['filas'])
-                print(subelemento.find('nombre').attrib['columnas'])
+                #print(subelemento.find('nombre').attrib['columnas'])
                 columnaC= str(subelemento.find('nombre').attrib['columnas'])
                 #CREO LOS ROBOTS QUE VIENEN EN EL ARCHIVO DE ENTRADA            
                 ListaCiudades.CrearCiudad(nombreC,filaC,columnaC)
-                print(subelemento.tag)
+                #print(subelemento.tag)
 
             #GUARDANDO LOS DATOS EN LA MATRIZ
                 for subsubelemento in subelemento.iter('fila'):
                     #BUSCANDO LA RUTA A LA QUE SE LE VA A AGREGAR LA MATRIZ
-                    print(subelemento.find('nombre').text)
+                    #print(subelemento.find('nombre').text)
                     Posicion =  ListaCiudades.getCiudad(subelemento.find('nombre').text)
-                    print(Posicion)
-                    print(subsubelemento.text)
+                    #print(Posicion)
+                    #print(subsubelemento.text)
                     lista =re.findall("[ECR*\s]" , subsubelemento.text)
                     print(lista)
-                    
+                    numerofila= str(subsubelemento.attrib['numero'])
+
                     contador = 1
                     #FOR DONDE METO LOS DATOS A LA MATRIZ 
                     for dato in lista:
                         #GUARDO DATOS EN LA MATRIZ (X , Y , CARACTER)
-                        Posicion.matriz.insertar(filaC,contador,dato)
+                        print(numerofila,contador,dato)
+                        Posicion.matriz.insertar(numerofila,contador,dato)
                         print(dato)   
-                        contador+1
-
+                        contador+=1
+                        #print(contador)
+                    print("imprime->"+str(contador))
             #print(subelemento.find('ciudad').text)
 
         
@@ -166,7 +159,11 @@ while True:
         
         print("--------------")
         print("CIUDADES QUE TENGO")
-        ListaCiudades.mostrarCiudad()        
+        ListaCiudades.mostrarCiudad()
+
+        datox = input("INGRESE EL NOMBRE DE LA CIUDAD PARA GENERAR GRAFICA")
+        ciudax = ListaCiudades.getCiudad(datox)
+        ciudax.matriz.graficarNeato(datox)        
 
         
     elif Eleccion == "4":

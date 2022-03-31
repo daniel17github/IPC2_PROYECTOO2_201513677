@@ -226,6 +226,18 @@ class MatrizDispersa():
                     contenido += '\n\tnode[label="*" fillcolor="black" pos="{},-{}!" shape=box]i{}_{};'.format( #pos="{},-{}!"
                         posy_celda, posx, pivote_celda.coordenadaX, pivote_celda.coordenadaY
                     )
+                elif pivote_celda.caracter == 'E':
+                    contenido += '\n\tnode[label="*" fillcolor="green" pos="{},-{}!" shape=box]i{}_{};'.format( #pos="{},-{}!"
+                        posy_celda, posx, pivote_celda.coordenadaX, pivote_celda.coordenadaY
+                    )
+                elif pivote_celda.caracter == 'C':
+                    contenido += '\n\tnode[label="*" fillcolor="blue" pos="{},-{}!" shape=box]i{}_{};'.format( #pos="{},-{}!"
+                        posy_celda, posx, pivote_celda.coordenadaX, pivote_celda.coordenadaY
+                    )
+                elif pivote_celda.caracter == 'R':
+                    contenido += '\n\tnode[label="*" fillcolor="gray" pos="{},-{}!" shape=box]i{}_{};'.format( #pos="{},-{}!"
+                        posy_celda, posx, pivote_celda.coordenadaX, pivote_celda.coordenadaY
+                    )
                 else:
                     contenido += '\n\tnode[label=" " fillcolor="white" pos="{},-{}!" shape=box]i{}_{};'.format( # pos="{},-{}!"
                         posy_celda, posx, pivote_celda.coordenadaX, pivote_celda.coordenadaY
