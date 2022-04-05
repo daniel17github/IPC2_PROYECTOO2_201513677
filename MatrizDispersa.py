@@ -1,7 +1,7 @@
 from Nodo_Cabezera import Nodo_Cabecera
 from Lista_Cabezera import Lista_Cabecera
 import os
-import webbrowser
+#import webbrowser
 
 # -----------------------------Codigo de MATRIZ DISPERSA ----------------
 # -------- Clase NodoOrtogonal, con 4 apuntadores -> Nodos Internos 

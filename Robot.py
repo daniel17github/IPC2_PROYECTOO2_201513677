@@ -6,5 +6,5 @@ class Robot: #Clase Nodo
         self.capacidad = capacidad
         self.siguiente = None
    
-    def gerNombre(self):
+    def getNombre(self):
         return self.nombre

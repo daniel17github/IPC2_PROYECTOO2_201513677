@@ -150,9 +150,6 @@ while True:
 
 
 
-
-
-
     elif Eleccion == "3":
         print("ROBOTS QUE TENGO...")
         ListaRobots.mostrarRobots()
