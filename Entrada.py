@@ -1,3 +1,4 @@
+from cgi import print_arguments
 import xml.etree.ElementTree as ET
 import re
 
@@ -17,8 +18,8 @@ def menu():
    
     print("             MENU")
     print("1.Cargar archivo")
-    print("2.Elegir patron ")
-    print("3.Mostrar Datos Ordenados")
+    print("2.MISIONES ")
+    print("3.DATOS GUARDADOS")
     print("4.Datos Personales")
     print("5.Mostrar Datos actuales")
     print("6.Salir")
@@ -26,32 +27,8 @@ def menu():
     
 
 
-'''matriz = MatrizDispersa()
-
-matriz.insertar(1, 1, 'Andre')     
-matriz.insertar(1, 2, 'Jose Jorge')
-matriz.insertar(1, 3, 'Nathan')
-matriz.insertar(1, 4, 'Kemel')
-matriz.insertar(2, 1, '*')
-matriz.insertar(2, 2, '*')
-matriz.insertar(2, 3, '*')
-matriz.insertar(2, 4, '*')
-matriz.insertar(3, 1, '*')
-matriz.insertar(3, 2, 'hola')
-matriz.insertar(3, 3, '*')
-
-
-matriz.graficarNeato('MatrizDispersa')
-
-matriz.recorridoPorFila(50)
-matriz.recorridoPorColumna(2)
-
-NodoEncontrado = matriz.ubicarCoordenada(50,20)'''
-
-print('Hola mundo')
-
 def CargarArchivo(ruta):
-    print("Ruta que entra para cargar los archivos:" + ruta)
+    #print("Ruta que entra para cargar los archivos:  " + ruta)
     #C:\Users\Dany\Documents\USAC\IPC2 2022\Laboratorio\Proyecto2\ArchivoPrueba.xml
     #C:\Users\Dany\Documents\USAC\IPC2 2022\Laboratorio\Proyecto2\prueba1.xml
     tree= ET.parse(ruta)
@@ -60,29 +37,29 @@ def CargarArchivo(ruta):
     
     # FOR QUE ME MUESTRA QUE DATOS TENGO 
     for elemento in raiz:
-        print(elemento.tag)
+        #print(elemento.tag)
         validasss = elemento.tag
 
         #GUARDO LOS ROBOTS EN MI LISTA
         if  validasss == "robots":
-            print('entro en robot')
+            #print('entro en robot')
             for subelementorobot in elemento.iter('robot'):
                 nombreR=""
                 capacidad=""
                 RtipoR =""
                 #print(subelementorobot.tag)
-                print(subelementorobot.find('nombre').text)
+                #print(subelementorobot.find('nombre').text)
                 nombreR= subelementorobot.find('nombre').text
-                print(subelementorobot.find('nombre').attrib['tipo'])
+                #print(subelementorobot.find('nombre').attrib['tipo'])
                 tipoR=str(subelementorobot.find('nombre').attrib['tipo'])
-                print(subelementorobot.find('nombre').attrib['capacidad'])
+                #print(subelementorobot.find('nombre').attrib['capacidad'])
                 capacidadR= str(subelementorobot.find('nombre').attrib['capacidad'])
                 #CREO LOS ROBOTS QUE VIENEN EN EL ARCHIVO DE ENTRADA            
                 ListaRobots.CrearRobot(nombreR,tipoR,capacidadR)
-
+                print("LOS ROBOTS FUERON GUARADADOS EXITOSAMENTE")
         #GUARDO LAS CIUDADES EN MI LISTA
         else:
-            print('entro en ciudades')
+            #print('entro en ciudades')
             for subelemento in elemento.iter('ciudad'):
                 nombreC=""
                 filaC=""
@@ -106,23 +83,24 @@ def CargarArchivo(ruta):
                     #print(Posicion)
                     #print(subsubelemento.text)
                     lista =re.findall("[ECR*\s]" , subsubelemento.text)
-                    print(lista)
+                    #LA LISTA ME TIENE QUE VENIR SIN ESPACIOS ANTES DE LAS COMILLAS Y FINAL DE LAS COMILLAS
+                    #print(lista)
                     numerofila= str(subsubelemento.attrib['numero'])
 
                     contador = 1
                     #FOR DONDE METO LOS DATOS A LA MATRIZ 
                     for dato in lista:
                         #GUARDO DATOS EN LA MATRIZ (X , Y , CARACTER)
-                        print(numerofila,contador,dato)
+                        #print(numerofila,contador,dato)
                         Posicion.matriz.insertar(numerofila,contador,dato)
-                        print(dato)   
+                        #print(dato)   
                         contador+=1
                         #print(contador)
-                    print("imprime->"+str(contador))
+                    #print("imprime->"+str(contador))
             #print(subelemento.find('ciudad').text)
-
-        
-      
+            print("CIUDADES GUARDADOS CON EXITO")
+    print("DATOS GUARDADOS CORRECTAMENTE")
+             
         
 
     print("-----------------------")  
@@ -145,22 +123,51 @@ while True:
         CargarArchivo(ruta)
 
     elif Eleccion == "2":
-        print("Desplegando matrices...")
+        print("************     MISIONES     ************")
+        print("1. MISION DE RESCATE")
+        print("2. MISION DE EXTRACCION DE RECURSOS")
+        elec1 = input("SELECCIONE UNA OPCION")
 
+        if elec1 == "1":
+            #VERIFICANDO SI HAY CHAPIN RESCUE EN MIS DATOS
+            #SI NO HAY CHAPIN RESCUE NO HAGO LAS MISIONES
+
+            #IDENTIFICAR LA CIUDAD QUE QUIERO UTILIZAR
+
+
+            #VERIFIAR SI HAY UNIDADES CIVILES EN LA CIUDAD PARA PODER REALIZARLO
+            print("")
+
+
+        elif elec1 == "2" :
+            print("")
+            #VERIFIANDO SI HAY CHAPIN FIGHTER 
+            #SI NO HAY CHAPIN FIGHTER NO HAGO LAS MISIONES
+
+            
+
+        else:
+            print("OPCION INCORRECTA SELECCIONE UN NUMERO ENTRE 1 Y 2")
 
 
 
     elif Eleccion == "3":
-        print("ROBOTS QUE TENGO...")
+        print("DATOS QUE HAY GUARDADOS POR EL MOMENTO ...")
+        print("ROBOTS -----------------------------")
         ListaRobots.mostrarRobots()
         
-        print("--------------")
-        print("CIUDADES QUE TENGO")
+        print(" ")
+        print("CIUDADES-------------------------------")
         ListaCiudades.mostrarCiudad()
 
-        datox = input("INGRESE EL NOMBRE DE LA CIUDAD PARA GENERAR GRAFICA")
+        datox = input("INGRESE EL NOMBRE DE LA CIUDAD PARA GENERAR GRAFICA: ")
+        
         ciudax = ListaCiudades.getCiudad(datox)
-        ciudax.matriz.graficarNeato(datox)        
+
+        if ciudax is None :
+            print("CIUDAD NO EXISTE INGRESE BIEN EL NOMBRE ")
+        else:
+            ciudax.matriz.graficarNeato(datox)        
 
         
     elif Eleccion == "4":
