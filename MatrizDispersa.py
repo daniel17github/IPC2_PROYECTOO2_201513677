@@ -166,6 +166,9 @@ class MatrizDispersa():
             print('Coordenada no encontrada')
             return None
 
+  
+
+
 
 
 #METODO PARA GRAFICAR 

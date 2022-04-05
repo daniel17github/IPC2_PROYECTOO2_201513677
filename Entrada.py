@@ -176,6 +176,8 @@ while True:
 
                 #IDENTIFICAR LA CIUDAD QUE QUIERO UTILIZAR
                 print("CIUDADES A RESCATAR ")
+
+                
                 ListaCiudades.mostrarCiudad()
                 ciudad = input("SELECCIONE LA CIUDAD DONDE REALIZARA EL RESCATE: ")
                 #VERIFIAR SI HAY UNIDADES CIVILES EN LA CIUDAD PARA PODER REALIZARLO
