@@ -14,7 +14,7 @@ print("Iniciando el menu para  ")
 
 def menu():
 
-    print("\n        PISOS ARTESANALES S.A          ")
+    print("\n        CHAPIN WARRIORS S.A          ")
     print("\n---------------------------------------")
    
     print("             MENU")
@@ -130,8 +130,6 @@ while True:
         print("*   3. SALIR                             *")
         print("******************************************")
         elec1 = input("SELECCIONE UNA OPCION : ")
-
-
         
 
         if elec1 == "1":
@@ -144,15 +142,22 @@ while True:
                 print("\n\n*******************************")
                 print("ROBOTS QUE SE PUEDEN UTILIZAR : ")
                 ListaRobots.mostrarRescue("ChapinRescue")
-                print("*********************************")
+                print("*********************************\n")
+
+               #ELIGIENDO EL ROBOT QUE UTILIZARE
+                Roboxx = input("SELECCION EL ROBOT CON EL QUE QUIERE HACER EL RESCATE: ")
+
+                #IDENTIFICAR LA CIUDAD QUE QUIERO UTILIZAR
+                print("CIUDADES A RESCATAR ")
+                ListaCiudades.mostrarCiudad()
+                ciudad = input("SELECCIONE LA CIUDAD DONDE REALIZARA EL RESCATE : ")
+                #VERIFIAR SI HAY UNIDADES CIVILES EN LA CIUDAD PARA PODER REALIZARLO
+
+
             else:
                 print("\x1b[1;33m"+"    NO HAY COINCIDENCIAS NO SE PUEDE REALIZAR LA MISION"+'\033[0;m')
                 #SI NO HAY CHAPIN RESCUE NO HAGO LAS MISIONES
 
-                #IDENTIFICAR LA CIUDAD QUE QUIERO UTILIZAR
-
-
-                #VERIFIAR SI HAY UNIDADES CIVILES EN LA CIUDAD PARA PODER REALIZARLO
             
 
 
@@ -164,7 +169,18 @@ while True:
                 print("\n\n*******************************")
                 print("ROBOTS QUE SE PUEDEN UTILIZAR : ")
                 ListaRobots.mostrarRescue("ChapinFighter")
-                print("*********************************")
+                print("*********************************\n")
+
+                #ELIGIENDO EL ROBOT QUE UTILIZARE
+                Roboxx2 = input("SELECCION EL ROBOT CON EL QUE QUIERE HACER EL RESCATE: ")
+
+                #IDENTIFICAR LA CIUDAD QUE QUIERO UTILIZAR
+                print("CIUDADES A RESCATAR ")
+                ListaCiudades.mostrarCiudad()
+                ciudad = input("SELECCIONE LA CIUDAD DONDE REALIZARA EL RESCATE: ")
+                #VERIFIAR SI HAY UNIDADES CIVILES EN LA CIUDAD PARA PODER REALIZARLO
+
+
             else:
                 #SI NO HAY CHAPIN FIGHTER NO HAGO LAS MISIONES
 
@@ -177,13 +193,14 @@ while True:
 
 
     elif Eleccion == "3":
-        print("DATOS QUE HAY GUARDADOS POR EL MOMENTO ...")
-        print("ROBOTS -----------------------------")
+        print("DATOS QUE HAY GUARDADOS POR EL MOMENTO ...\n")
+        print(" -------------ROBOTS----------------")
         ListaRobots.mostrarRobots()
-        
+        print("_________________________________________")
         print(" ")
-        print("CIUDADES-------------------------------")
+        print("--------------CIUDADES-----------------")
         ListaCiudades.mostrarCiudad()
+        print("__________________________________________")
 
         datox = input("INGRESE EL NOMBRE DE LA CIUDAD PARA GENERAR GRAFICA: ")
         
