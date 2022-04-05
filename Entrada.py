@@ -125,9 +125,10 @@ while True:
 
     elif Eleccion == "2":
         print("************     MISIONES     ************")
-        print("1. MISION DE RESCATE")
-        print("2. MISION DE EXTRACCION DE RECURSOS")
-        print("3. SALIR")
+        print("*   1. MISION DE RESCATE                 *")
+        print("*   2. MISION DE EXTRACCION DE RECURSOS  *")
+        print("*   3. SALIR                             *")
+        print("******************************************")
         elec1 = input("SELECCIONE UNA OPCION : ")
 
 
@@ -140,19 +141,19 @@ while True:
             #dato = ListaRobots.mostrarRescue("ChapinFighter")
             #print("EL DATO QUE RECIBO ES --->"+dato)
             if ListaRobots.mostrarRescue("ChapinRescue") == "2":
-                print("\n\n\n\n\n\n*******************************")
+                print("\n\n*******************************")
                 print("ROBOTS QUE SE PUEDEN UTILIZAR : ")
                 ListaRobots.mostrarRescue("ChapinRescue")
                 print("*********************************")
             else:
-                print("NO HAY COINCIDENCIAS NO SE PUEDE REALIZAR LA MISION")
+                print("\x1b[1;33m"+"    NO HAY COINCIDENCIAS NO SE PUEDE REALIZAR LA MISION"+'\033[0;m')
                 #SI NO HAY CHAPIN RESCUE NO HAGO LAS MISIONES
 
                 #IDENTIFICAR LA CIUDAD QUE QUIERO UTILIZAR
 
 
                 #VERIFIAR SI HAY UNIDADES CIVILES EN LA CIUDAD PARA PODER REALIZARLO
-            print("salgo")
+            
 
 
         elif elec1 == "2" :
@@ -160,14 +161,14 @@ while True:
                 #VERIFIANDO SI HAY CHAPIN FIGHTER 
 
             if ListaRobots.mostrarRescue("ChapinFighter") == "2":
-                print("\n\n\n\n\n\n*******************************")
+                print("\n\n*******************************")
                 print("ROBOTS QUE SE PUEDEN UTILIZAR : ")
                 ListaRobots.mostrarRescue("ChapinFighter")
                 print("*********************************")
             else:
                 #SI NO HAY CHAPIN FIGHTER NO HAGO LAS MISIONES
 
-                print("NO HAY COINCIDENCIAS NO SE PUEDE REALIZAR LA MISION")
+                print("\x1b[1;33m"+"    NO HAY COINCIDENCIAS NO SE PUEDE REALIZAR LA MISION"+'\033[0;m')
                 
                 
         else:

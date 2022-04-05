@@ -173,16 +173,16 @@ class MatrizDispersa():
         contenido = '''digraph G{
     node[shape=box, width=0.7, height=0.7, fontname="Arial", fillcolor="white", style=filled]
     edge[style = "bold"]
-    node[label = "capa:''' + str(self.capa) +'''" fillcolor="darkolivegreen1" pos = "-1,1!"]raiz;'''
+    node[label = "''' + str(self.capa) +'''" fillcolor="darkolivegreen1" pos = "-1,1!"]raiz;'''
         contenido += '''label = "{}" \nfontname="Arial Black" \nfontsize="25pt" \n
-                    \n'''.format('\nMATRIZ DISPERSA')
+                    \n'''.format('\nCIUDAD: '+nombre)
 
         # --graficar nodos CABECERA
         # --graficar nodos fila
         pivote = self.filas.primero
         posx = 0
         while pivote != None:
-            contenido += '\n\tnode[label = "F{}" fillcolor="azure3" pos="-1,-{}!" shape=box]x{};'.format(pivote.id, 
+            contenido += '\n\tnode[label = "{}" fillcolor="azure3" pos="-1,-{}!" shape=box]x{};'.format(pivote.id, 
             posx, pivote.id)
             pivote = pivote.siguiente
             posx += 1
@@ -197,7 +197,7 @@ class MatrizDispersa():
         pivotey = self.columnas.primero
         posy = 0
         while pivotey != None:
-            contenido += '\n\tnode[label = "C{}" fillcolor="azure3" pos = "{},1!" shape=box]y{};'.format(pivotey.id, 
+            contenido += '\n\tnode[label = "{}" fillcolor="azure3" pos = "{},1!" shape=box]y{};'.format(pivotey.id, 
             posy, pivotey.id)
             pivotey = pivotey.siguiente
             posy += 1
@@ -245,6 +245,8 @@ class MatrizDispersa():
                 pivote_celda = pivote_celda.derecha
             
             pivote_celda = pivote.acceso
+
+            #FLECHITAS DE LOS COSTADOS
             while pivote_celda != None:
                 if pivote_celda.derecha != None:
                     contenido += '\n\ti{}_{}->i{}_{};'.format(pivote_celda.coordenadaX, pivote_celda.coordenadaY,
@@ -259,6 +261,8 @@ class MatrizDispersa():
             posx += 1
         
         pivote = self.columnas.primero
+
+        #FLECHITAS
         while pivote != None:
             pivote_celda : Nodo_Celda = pivote.acceso
             while pivote_celda != None:
