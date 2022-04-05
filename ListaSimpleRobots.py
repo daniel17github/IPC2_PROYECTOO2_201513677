@@ -1,3 +1,4 @@
+from tempfile import tempdir
 from Robot import Robot
 
 class ListaSimpleRobots():
@@ -39,4 +40,16 @@ class ListaSimpleRobots():
             tmp = tmp.siguiente
         return None
 
-    
+    def mostrarRescue(self,tipo):
+        jeje = "1"
+        tmp= self.inicio
+        
+        while tmp is not None:
+            if tmp.tipo == tipo:
+                print(tmp.nombre)
+                jeje="2"
+                #return tmp.nombre
+            tmp = tmp.siguiente
+        return jeje
+
+

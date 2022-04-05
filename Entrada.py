@@ -1,8 +1,9 @@
+from ast import Break
 from cgi import print_arguments
 import xml.etree.ElementTree as ET
 import re
 
-from MatrizDispersa import MatrizDispersa
+#from MatrizDispersa import MatrizDispersa
 from ListaSimpleRobots import ListaSimpleRobots
 from ListaSimpleCiudades import ListaSimpleCiudades
 ListaRobots = ListaSimpleRobots() # CREANDO LISTA VACIA PARA LOS ROBOTS
@@ -126,28 +127,51 @@ while True:
         print("************     MISIONES     ************")
         print("1. MISION DE RESCATE")
         print("2. MISION DE EXTRACCION DE RECURSOS")
-        elec1 = input("SELECCIONE UNA OPCION")
+        print("3. SALIR")
+        elec1 = input("SELECCIONE UNA OPCION : ")
+
+
+        
 
         if elec1 == "1":
-            #VERIFICANDO SI HAY CHAPIN RESCUE EN MIS DATOS
-            #SI NO HAY CHAPIN RESCUE NO HAGO LAS MISIONES
+                #VERIFICANDO SI HAY CHAPIN RESCUE EN MIS DATOS
+            
+            # print("entro ")
+            #dato = ListaRobots.mostrarRescue("ChapinFighter")
+            #print("EL DATO QUE RECIBO ES --->"+dato)
+            if ListaRobots.mostrarRescue("ChapinRescue") == "2":
+                print("\n\n\n\n\n\n*******************************")
+                print("ROBOTS QUE SE PUEDEN UTILIZAR : ")
+                ListaRobots.mostrarRescue("ChapinRescue")
+                print("*********************************")
+            else:
+                print("NO HAY COINCIDENCIAS NO SE PUEDE REALIZAR LA MISION")
+                #SI NO HAY CHAPIN RESCUE NO HAGO LAS MISIONES
 
-            #IDENTIFICAR LA CIUDAD QUE QUIERO UTILIZAR
+                #IDENTIFICAR LA CIUDAD QUE QUIERO UTILIZAR
 
 
-            #VERIFIAR SI HAY UNIDADES CIVILES EN LA CIUDAD PARA PODER REALIZARLO
-            print("")
+                #VERIFIAR SI HAY UNIDADES CIVILES EN LA CIUDAD PARA PODER REALIZARLO
+            print("salgo")
 
 
         elif elec1 == "2" :
             print("")
-            #VERIFIANDO SI HAY CHAPIN FIGHTER 
-            #SI NO HAY CHAPIN FIGHTER NO HAGO LAS MISIONES
+                #VERIFIANDO SI HAY CHAPIN FIGHTER 
 
-            
+            if ListaRobots.mostrarRescue("ChapinFighter") == "2":
+                print("\n\n\n\n\n\n*******************************")
+                print("ROBOTS QUE SE PUEDEN UTILIZAR : ")
+                ListaRobots.mostrarRescue("ChapinFighter")
+                print("*********************************")
+            else:
+                #SI NO HAY CHAPIN FIGHTER NO HAGO LAS MISIONES
 
+                print("NO HAY COINCIDENCIAS NO SE PUEDE REALIZAR LA MISION")
+                
+                
         else:
-            print("OPCION INCORRECTA SELECCIONE UN NUMERO ENTRE 1 Y 2")
+            print("OPCION INCORRECTA SELECCIONE UN NUMERO ENTRE 1-2 ")
 
 
 
