@@ -36,6 +36,7 @@ def CargarArchivo(ruta):
     raiz= tree.getroot()
     global validass
     global mision 
+    global posicionMILITAR
     # FOR QUE ME MUESTRA QUE DATOS TENGO 
     for elemento in raiz:
         #print(elemento.tag)
@@ -76,11 +77,18 @@ def CargarArchivo(ruta):
                 ListaCiudades.CrearCiudad(nombreC,filaC,columnaC)
                 #print(subelemento.tag)
 
+           
+          
+
+
             #GUARDANDO LOS DATOS EN LA MATRIZ
                 for subsubelemento in subelemento.iter('fila'):
                     #BUSCANDO LA RUTA A LA QUE SE LE VA A AGREGAR LA MATRIZ
                     #print(subelemento.find('nombre').text)
                     Posicion =  ListaCiudades.getCiudad(subelemento.find('nombre').text)
+                    print(Posicion)
+                    posicionMILITAR = Posicion
+                    print(posicionMILITAR)
                     #print(Posicion)
                     #print(subsubelemento.text)
                     lista =re.findall("[ECR*\s]" , subsubelemento.text)
@@ -105,6 +113,24 @@ def CargarArchivo(ruta):
                         if dato == "R":
                             direccion = ListaCiudades.getCiudad(nombreC)
                             direccion.setMilitar("militar")
+
+
+                for suxbelemento in subelemento.iter('unidadMilitar'):
+                    nombreM=""
+                    filaM=""
+                    coluM=""
+
+                    nombreM = str(suxbelemento.text)
+                    print(nombreM)
+                    filaM = suxbelemento.attrib['fila']
+                    print(filaM)
+                    coluM= suxbelemento.attrib['columna']
+                    print(coluM)
+                    letra = "M"
+                    print(filaM,coluM,letra)
+                    print(posicionMILITAR)
+                    #posicionMILITAR.matriz.insertar(filaM,coluM,"M")
+
                         #print(contador)
                     #print("imprime->"+str(contador))
             #print(subelemento.find('ciudad').text)
@@ -162,16 +188,22 @@ while True:
                     print("\n\n*******************************")
                     print("CIUDADES QUE SE PUEDEN UTILIZAR : ")
                     ListaCiudades.mostrarCiudadCivil("civil")
-                    print("*********************************\n")
+                    print("*********************************** \n")
                     ciudad = input("SELECCIONE LA CIUDAD DONDE REALIZARA EL RESCATE : ")
+                    print("--------------")
+                    print("PUNTOS DE PARTIDA")
+                    ListaCiudades.mostrarCiudadCivil2("civil")
+                    partida = input("SELECCIONE PUNTO DE PARTIDA: ")
+
+
                 #VERIFIAR SI HAY UNIDADES CIVILES EN LA CIUDAD PARA PODER REALIZARLO
                 else:
-                    print("\x1b[1;33m"+"    NO HAY >>UNIDADES CIVILES<<S NO SE PUEDE REALIZAR LA MISION"+'\033[0;m')
+                    print("\x1b[1;33m"+" MISION IMPOSIBLE INEXISTENCIA DE  >>UNIDADES CIVILES<<, NO SE PUEDE REALIZAR LA MISION"+'\033[0;m')
 
 
 
             else:
-                print("\x1b[1;33m"+"    NO HAY ROBOTS TIPO >>CHAPINRESCUE<< NO SE PUEDE REALIZAR LA MISION"+'\033[0;m')
+                print("\x1b[1;33m"+"  NO HAY ROBOTS TIPO >>CHAPINRESCUE<< NO SE PUEDE REALIZAR LA MISION"+'\033[0;m')
                 #SI NO HAY CHAPIN RESCUE NO HAGO LAS MISIONES
 
             
@@ -196,11 +228,15 @@ while True:
                     print("\n\n*******************************")
                     print("CIUDADES QUE SE PUEDEN UTILIZAR : ")
                     ListaCiudades.mostrarCiudadRecurso("militar")
-                    print("*********************************\n")
-                    ciudad = input("SELECCIONE LA CIUDAD DONDE REALIZARA EL RESCATE : ")
+                    print("*********************************** \n")
+                    ciudad = input("SELECCIONE LA CIUDAD DONDE REALIZARA LA EXTRACCION : ")
+                    print("--------------")
+                    print("PUNTOS DE PARTIDA")
+                    ListaCiudades.mostrarCiudadRecurso2("militar")
+                    partida = input("SELECCIONE PUNTO DE PARTIDA: ")
                 #VERIFIAR SI HAY UNIDADES CIVILES EN LA CIUDAD PARA PODER REALIZARLO
                 else:
-                    print("\x1b[1;33m"+"    NO HAY >>RECURSOS<< NO SE PUEDE REALIZAR LA MISION"+'\033[0;m')
+                    print("\x1b[1;33m"+" MISION IMPOSIBLE INEXISTENCIA DE UNIDADES >>RECURSOS<< ,NO SE PUEDE REALIZAR LA MISION"+'\033[0;m')
 
 
             else:

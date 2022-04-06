@@ -241,6 +241,10 @@ class MatrizDispersa():
                     contenido += '\n\tnode[label="*" fillcolor="gray" pos="{},-{}!" shape=box]i{}_{};'.format( #pos="{},-{}!"
                         posy_celda, posx, pivote_celda.coordenadaX, pivote_celda.coordenadaY
                     )
+                elif pivote_celda.caracter == 'M':
+                    contenido += '\n\tnode[label="*" fillcolor="red" pos="{},-{}!" shape=box]i{}_{};'.format( #pos="{},-{}!"
+                        posy_celda, posx, pivote_celda.coordenadaX, pivote_celda.coordenadaY
+                    )
                 else:
                     contenido += '\n\tnode[label=" " fillcolor="white" pos="{},-{}!" shape=box]i{}_{};'.format( # pos="{},-{}!"
                         posy_celda, posx, pivote_celda.coordenadaX, pivote_celda.coordenadaY
