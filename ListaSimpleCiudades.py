@@ -39,5 +39,28 @@ class ListaSimpleCiudades():
             tmp = tmp.siguiente
         return None
 
+    def mostrarCiudadRecurso(self,militar):
+        jeje = "3"
+        tmp= self.inicio
+        
+        while tmp is not None:
+            if tmp.militar == militar:
+                print(tmp.nombre)
+                jeje="4"
+                #return tmp.nombre
+            tmp = tmp.siguiente
+        return jeje
+
+    def mostrarCiudadCivil(self,civil):
+        jeje = "5"
+        tmp= self.inicio
+        
+        while tmp is not None:
+            if tmp.civil == civil:
+                print(tmp.nombre)
+                jeje="6"
+                #return tmp.nombre
+            tmp = tmp.siguiente
+        return jeje
 
     

@@ -6,6 +6,8 @@ class Ciudad: #Clase Nodo
         self.nombre = nombre
         self.fila = fila    
         self.columna = columna
+        self.civil = "no"
+        self.militar = "no"
         self.matriz = MatrizDispersa()
         self.siguiente = None
    
@@ -14,3 +16,15 @@ class Ciudad: #Clase Nodo
 
     def getMatriz(self):
         return self.matriz
+
+    def getCivil(self):
+        return self.civil
+
+    def setCivil(self,civil):
+        self.civil = civil
+
+    def getMilitar(self):
+        return self.militar
+
+    def setMilitar(self,militar):
+        self.militar = militar

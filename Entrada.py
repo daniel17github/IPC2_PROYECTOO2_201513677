@@ -35,7 +35,7 @@ def CargarArchivo(ruta):
     tree= ET.parse(ruta)
     raiz= tree.getroot()
     global validass
-    
+    global mision 
     # FOR QUE ME MUESTRA QUE DATOS TENGO 
     for elemento in raiz:
         #print(elemento.tag)
@@ -93,9 +93,18 @@ def CargarArchivo(ruta):
                     for dato in lista:
                         #GUARDO DATOS EN LA MATRIZ (X , Y , CARACTER)
                         #print(numerofila,contador,dato)
+                        
                         Posicion.matriz.insertar(numerofila,contador,dato)
                         #print(dato)   
                         contador+=1
+
+                        if dato == "C": 
+                            direccion = ListaCiudades.getCiudad(nombreC)
+                            direccion.setCivil("civil")
+                        
+                        if dato == "R":
+                            direccion = ListaCiudades.getCiudad(nombreC)
+                            direccion.setMilitar("militar")
                         #print(contador)
                     #print("imprime->"+str(contador))
             #print(subelemento.find('ciudad').text)
@@ -149,9 +158,14 @@ while True:
 
                 #IDENTIFICAR LA CIUDAD QUE QUIERO UTILIZAR
                 print("CIUDADES A RESCATAR ")
-                ListaCiudades.mostrarCiudad()
+                ListaCiudades.mostrarCiudadCivil("civil")
+
+                #ListaCiudades.mostrarCiudad()
                 ciudad = input("SELECCIONE LA CIUDAD DONDE REALIZARA EL RESCATE : ")
                 #VERIFIAR SI HAY UNIDADES CIVILES EN LA CIUDAD PARA PODER REALIZARLO
+
+
+
 
 
             else:
@@ -176,9 +190,9 @@ while True:
 
                 #IDENTIFICAR LA CIUDAD QUE QUIERO UTILIZAR
                 print("CIUDADES A RESCATAR ")
+                ListaCiudades.mostrarCiudadRecurso("militar")
 
-                
-                ListaCiudades.mostrarCiudad()
+                #ListaCiudades.mostrarCiudad()
                 ciudad = input("SELECCIONE LA CIUDAD DONDE REALIZARA EL RESCATE: ")
                 #VERIFIAR SI HAY UNIDADES CIVILES EN LA CIUDAD PARA PODER REALIZARLO
 

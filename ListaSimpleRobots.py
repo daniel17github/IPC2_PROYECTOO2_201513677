@@ -23,6 +23,9 @@ class ListaSimpleRobots():
                 tmp = tmp.siguiente
             tmp.siguiente = nuevo
 
+
+            
+
     def mostrarRobots(self):
         tmp = self.inicio
         while tmp is not None:
