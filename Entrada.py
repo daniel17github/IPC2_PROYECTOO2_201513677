@@ -158,18 +158,20 @@ while True:
 
                 #IDENTIFICAR LA CIUDAD QUE QUIERO UTILIZAR
                 print("CIUDADES A RESCATAR ")
-                ListaCiudades.mostrarCiudadCivil("civil")
-
-                #ListaCiudades.mostrarCiudad()
-                ciudad = input("SELECCIONE LA CIUDAD DONDE REALIZARA EL RESCATE : ")
+                if ListaCiudades.mostrarCiudadCivil("civil") =="6":
+                    print("\n\n*******************************")
+                    print("CIUDADES QUE SE PUEDEN UTILIZAR : ")
+                    ListaCiudades.mostrarCiudadCivil("civil")
+                    print("*********************************\n")
+                    ciudad = input("SELECCIONE LA CIUDAD DONDE REALIZARA EL RESCATE : ")
                 #VERIFIAR SI HAY UNIDADES CIVILES EN LA CIUDAD PARA PODER REALIZARLO
-
-
+                else:
+                    print("\x1b[1;33m"+"    NO HAY >>UNIDADES CIVILES<<S NO SE PUEDE REALIZAR LA MISION"+'\033[0;m')
 
 
 
             else:
-                print("\x1b[1;33m"+"    NO HAY COINCIDENCIAS NO SE PUEDE REALIZAR LA MISION"+'\033[0;m')
+                print("\x1b[1;33m"+"    NO HAY ROBOTS TIPO >>CHAPINRESCUE<< NO SE PUEDE REALIZAR LA MISION"+'\033[0;m')
                 #SI NO HAY CHAPIN RESCUE NO HAGO LAS MISIONES
 
             
@@ -190,17 +192,21 @@ while True:
 
                 #IDENTIFICAR LA CIUDAD QUE QUIERO UTILIZAR
                 print("CIUDADES A RESCATAR ")
-                ListaCiudades.mostrarCiudadRecurso("militar")
-
-                #ListaCiudades.mostrarCiudad()
-                ciudad = input("SELECCIONE LA CIUDAD DONDE REALIZARA EL RESCATE: ")
+                if ListaCiudades.mostrarCiudadRecurso("militar") =="4":
+                    print("\n\n*******************************")
+                    print("CIUDADES QUE SE PUEDEN UTILIZAR : ")
+                    ListaCiudades.mostrarCiudadRecurso("militar")
+                    print("*********************************\n")
+                    ciudad = input("SELECCIONE LA CIUDAD DONDE REALIZARA EL RESCATE : ")
                 #VERIFIAR SI HAY UNIDADES CIVILES EN LA CIUDAD PARA PODER REALIZARLO
+                else:
+                    print("\x1b[1;33m"+"    NO HAY >>RECURSOS<< NO SE PUEDE REALIZAR LA MISION"+'\033[0;m')
 
 
             else:
                 #SI NO HAY CHAPIN FIGHTER NO HAGO LAS MISIONES
 
-                print("\x1b[1;33m"+"    NO HAY COINCIDENCIAS NO SE PUEDE REALIZAR LA MISION"+'\033[0;m')
+                print("\x1b[1;33m"+"    NO HAY ROBOTS TIPO >>CHAPINFIGHTER<< NO SE PUEDE REALIZAR LA MISION"+'\033[0;m')
                 
                 
         else:
